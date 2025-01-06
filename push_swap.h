@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:39:07 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/05 18:45:41 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/06 16:07:09 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <unistd.h>
+# include <stdlib.h>
 # include <stdio.h>
 # include <stdarg.h>
 
@@ -22,6 +23,7 @@ struct t_list
 {
 	int	data;
 	struct t_list *next;
+	struct t_list *prev;
 };
 
 int	ft_isdigit(int c);
