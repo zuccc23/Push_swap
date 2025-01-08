@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:19:03 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/06 16:42:44 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/08 15:23:53 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ s_list	*create_node(int data)
 	return (newNode);
 }
 
-s_list	*assign_list(int *tab)
+s_list	*assign_list(int *tab, int size)
 {
 	s_list *list;
 	s_list *temp;
@@ -82,7 +82,7 @@ s_list	*assign_list(int *tab)
 	i = 1;
 	list = create_node(tab[0]);
 	temp = list;
-	while (tab[i])
+	while (i < size)
 	{
 		temp->next = create_node(tab[i]);
 		prev_temp = temp;
@@ -101,6 +101,26 @@ void	print_list(s_list *list)
 	}
 }
 
+void	swap(s_list **list)
+{
+	s_list	*temp_a;
+	s_list	*temp_b;
+	
+	temp_a = *list;
+	temp_b = *list;
+	temp_b = temp_b->next;
+	
+	temp_a->next = temp_b->next;
+	temp_b->next = temp_a;
+	*list = temp_b;
+}
+
+void	swap_both(s_list **stack_a, s_list **stack_b)
+{
+	swap(&(*stack_a));
+	swap(&(*stack_b));
+}
+
 int main(int argc, char **argv)
 {
 	// if (argc < 2)
@@ -110,16 +130,17 @@ int main(int argc, char **argv)
 	// printbin(5);
 	// bin(7);
 	int	tab[] = {2, 3, 5, 4};
-	s_list *list;
+	int	tab2[] = {8, 29, 4, 12};
+	s_list	*stack_a;
+	s_list	*stack_b;
 	
-	list = assign_list(tab);
-	// list = list->prev;
-	// list = list->next;
-	list = list->next;
-	list = list->next;
-	list = list->next;
-	list->next = NULL;
-	list = list->next;
-	printf("%d\n", list->data);
-	// print_list(list);
+	stack_a = assign_list(tab, 4);
+	// swap(&stack_a);
+	
+
+	stack_b = assign_list(tab2, 4);
+	// swap(&stack_b);
+	swap_both(&stack_a, &stack_b);
+	print_list(stack_a);
+	print_list(stack_b);
 }
