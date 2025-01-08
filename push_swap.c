@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:19:03 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/08 15:23:53 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/08 16:13:45 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,10 @@ void	swap(s_list **list)
 	s_list	*temp_a;
 	s_list	*temp_b;
 	
+	if (!*list)
+		return;
+	if (!(*list)->next)
+		return;
 	temp_a = *list;
 	temp_b = *list;
 	temp_b = temp_b->next;
@@ -121,6 +125,34 @@ void	swap_both(s_list **stack_a, s_list **stack_b)
 	swap(&(*stack_b));
 }
 
+void	push(s_list **give, s_list **receive)
+{
+	s_list	*temp;
+
+	if (!*give)
+		return;
+	temp = (*give)->next;
+	(*give)->next = *receive;
+	*receive = *give;
+	*give = temp;
+}
+
+void	rotate(s_list **stack)
+{
+	s_list	*first;
+	s_list	*last;
+
+	if (!*stack)
+		return;
+	if (!(*stack)->next)
+		return;
+	first = *stack;
+	last = ft_lstlast(*stack);
+	*stack = (*stack)->next;
+	first->next = NULL;
+	last->next = first;
+}
+
 int main(int argc, char **argv)
 {
 	// if (argc < 2)
@@ -129,18 +161,21 @@ int main(int argc, char **argv)
 	// getBit(5, 10);
 	// printbin(5);
 	// bin(7);
-	int	tab[] = {2, 3, 5, 4};
+	int	tab[] = {2, 13, 3, 7};
 	int	tab2[] = {8, 29, 4, 12};
 	s_list	*stack_a;
 	s_list	*stack_b;
 	
-	stack_a = assign_list(tab, 4);
-	// swap(&stack_a);
-	
-
+	stack_a = assign_list(tab, 2);
 	stack_b = assign_list(tab2, 4);
+	
+	// swap(&stack_a);
 	// swap(&stack_b);
-	swap_both(&stack_a, &stack_b);
+	// swap_both(&stack_a, &stack_b);
+	// push(&stack_a, &stack_b);
+	rotate(&stack_a);
+	
 	print_list(stack_a);
-	print_list(stack_b);
+	// printf("\n");
+	// print_list(stack_b);
 }

@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:57:55 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/03 17:03:55 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/08 16:03:55 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,15 @@ int	repeat_char(char *str)
 		i++;
 	}
 	return (0);
+}
+s_list	*ft_lstlast(s_list *lst)
+{
+	s_list	*tmp;
+
+	if (!lst)
+		return (NULL);
+	tmp = lst;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	return (tmp);
 }
