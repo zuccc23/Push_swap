@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:57:55 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/08 16:03:55 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/08 21:10:36 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,20 @@ s_list	*ft_lstlast(s_list *lst)
 	while (tmp->next != NULL)
 		tmp = tmp->next;
 	return (tmp);
+}
+
+s_list	*ft_lst_before_last(s_list *lst)
+{
+	s_list	*tmp;
+	s_list	*tmptmp;
+
+	if (!lst)
+		return (NULL);
+	tmp = lst;
+	while (tmp->next != NULL)
+	{
+		tmptmp = tmp;
+		tmp = tmp->next;
+	}
+	return (tmptmp);
 }

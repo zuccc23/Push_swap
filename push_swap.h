@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:39:07 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/08 16:05:49 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/08 21:10:52 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ int		ft_isdigit(int c);
 int		valid_char(const char *s);
 int		repeat_char(char *str);
 s_list	*ft_lstlast(s_list *lst);
+s_list	*ft_lst_before_last(s_list *lst);
 
 #endif

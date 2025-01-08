@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:19:03 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/08 16:13:45 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/08 21:25:47 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ s_list	*create_node(int data)
 	newNode = NULL;
 	newNode = malloc(sizeof(s_list));
 	if (!newNode)
-	return (NULL);
+		return (NULL);
 	newNode->data = data;
 	newNode->next = NULL;
 	newNode->prev = NULL;
@@ -81,10 +81,14 @@ s_list	*assign_list(int *tab, int size)
 	
 	i = 1;
 	list = create_node(tab[0]);
+	if (!list)
+		return (NULL);
 	temp = list;
 	while (i < size)
 	{
 		temp->next = create_node(tab[i]);
+		if (!temp->next)
+			return (NULL);
 		prev_temp = temp;
 		temp = temp->next;
 		temp->prev = prev_temp;
@@ -153,6 +157,32 @@ void	rotate(s_list **stack)
 	last->next = first;
 }
 
+void	rotate_both(s_list **stack_a, s_list **stack_b)
+{
+	rotate(&(*stack_a));
+	rotate(&(*stack_b));
+}
+
+void	rotate_down(s_list **stack)
+{
+	s_list	*last;
+	s_list	*b4last;
+
+	if (!*stack)
+		return;
+	if (!(*stack)->next)
+		return;
+	last = ft_lstlast(*stack);
+	b4last = ft_lst_before_last(*stack);
+	b4last->next = NULL;
+	last->next = *stack;
+	*stack = last;
+}
+void	rotate_down_both(s_list **stack_a, s_list **stack_b)
+{
+	rotate_down(&(*stack_a));
+	rotate_down(&(*stack_b));
+}
 int main(int argc, char **argv)
 {
 	// if (argc < 2)
@@ -163,19 +193,23 @@ int main(int argc, char **argv)
 	// bin(7);
 	int	tab[] = {2, 13, 3, 7};
 	int	tab2[] = {8, 29, 4, 12};
-	s_list	*stack_a;
-	s_list	*stack_b;
+	s_list	*stack_a = NULL;
+	s_list	*stack_b = NULL;
 	
-	stack_a = assign_list(tab, 2);
-	stack_b = assign_list(tab2, 4);
+	// stack_a = assign_list(tab, 4);
+	// stack_b = assign_list(tab2, 4);
 	
 	// swap(&stack_a);
 	// swap(&stack_b);
 	// swap_both(&stack_a, &stack_b);
 	// push(&stack_a, &stack_b);
-	rotate(&stack_a);
+	// rotate(&stack_b);
+	// rotate_both(&stack_a, &stack_b);
+	// stack_b = ft_lst_before_last(stack_a);
+	// rotate_down(&stack_a);
+	rotate_down_both(&stack_a, &stack_b);
 	
 	print_list(stack_a);
-	// printf("\n");
-	// print_list(stack_b);
+	printf("\n");
+	print_list(stack_b);
 }
