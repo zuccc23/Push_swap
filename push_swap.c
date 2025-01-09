@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:19:03 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/08 21:25:47 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/09 17:01:43 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,9 @@ void	swap(s_list **list)
 	temp_b = temp_b->next;
 	
 	temp_a->next = temp_b->next;
+	temp_a->prev = temp_b;
 	temp_b->next = temp_a;
+	temp_b->prev = NULL;
 	*list = temp_b;
 }
 
@@ -137,8 +139,10 @@ void	push(s_list **give, s_list **receive)
 		return;
 	temp = (*give)->next;
 	(*give)->next = *receive;
+	(*receive)->prev = *give;
 	*receive = *give;
 	*give = temp;
+	(*give)->prev = NULL;
 }
 
 void	rotate(s_list **stack)
@@ -153,7 +157,9 @@ void	rotate(s_list **stack)
 	first = *stack;
 	last = ft_lstlast(*stack);
 	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
 	first->next = NULL;
+	first->prev = last;
 	last->next = first;
 }
 
@@ -196,8 +202,8 @@ int main(int argc, char **argv)
 	s_list	*stack_a = NULL;
 	s_list	*stack_b = NULL;
 	
-	// stack_a = assign_list(tab, 4);
-	// stack_b = assign_list(tab2, 4);
+	stack_a = assign_list(tab, 4);
+	stack_b = assign_list(tab2, 4);
 	
 	// swap(&stack_a);
 	// swap(&stack_b);
@@ -207,9 +213,14 @@ int main(int argc, char **argv)
 	// rotate_both(&stack_a, &stack_b);
 	// stack_b = ft_lst_before_last(stack_a);
 	// rotate_down(&stack_a);
-	rotate_down_both(&stack_a, &stack_b);
+	// rotate_down_both(&stack_a, &stack_b);
 	
-	print_list(stack_a);
-	printf("\n");
-	print_list(stack_b);
+	// stack_b = stack_b->next;
+	// // stack_b = stack_b->prev;
+	// // stack_b = stack_b->prev;
+	// printf("%d\n", stack_b->data);
+	
+	// print_list(stack_a);
+	// printf("\n");
+	// print_list(stack_b);
 }
