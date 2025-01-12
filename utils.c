@@ -6,59 +6,13 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:57:55 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/08 21:10:36 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/12 15:20:57 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
 
-int	valid_char(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		if (ft_isdigit(s[i]) == 0 && s[i] != ' ' && s[i] != '+' && s[i] != '-')
-		{
-			return (1);
-		}
-		i++;
-	}
-	return (0);
-}
-
-int	repeat_char(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i + 1])
-	{
-		if (str[i] == ' ' && str[i + 1] == ' ')
-			return (1);
-		if (str[i] == '+' && ft_isdigit(str[i + 1]) == 0)
-			return (1);
-		if (str[i] == '-' && ft_isdigit(str[i + 1]) == 0)
-			return (1);
-		i++;
-	}
-	i = 0;
-	while (str[i])
-	{
-		if ((str[i] == '+' || str[i] == '-') && str[i + 1] == '\0')
-			return (1);
-		i++;
-	}
-	return (0);
-}
 s_list	*ft_lstlast(s_list *lst)
 {
 	s_list	*tmp;
@@ -85,4 +39,101 @@ s_list	*ft_lst_before_last(s_list *lst)
 		tmp = tmp->next;
 	}
 	return (tmptmp);
+}
+
+s_list	*create_node(int data)
+{
+	s_list *newNode;
+
+	newNode = NULL;
+	newNode = malloc(sizeof(s_list));
+	if (!newNode)
+		return (NULL);
+	newNode->data = data;
+	newNode->next = NULL;
+	newNode->prev = NULL;
+	newNode->target = NULL;
+	return (newNode);
+}
+
+s_list	*assign_list(int *tab, int size)
+{
+	s_list *list;
+	s_list *temp;
+	s_list	*prev_temp;
+	int 	i;
+	
+	i = 1;
+	list = create_node(tab[0]);
+	if (!list)
+		return (NULL);
+	temp = list;
+	while (i < size)
+	{
+		temp->next = create_node(tab[i]);
+		if (!temp->next)
+			return (NULL);
+		prev_temp = temp;
+		temp = temp->next;
+		temp->prev = prev_temp;
+		i++;
+	}
+	return (list);
+}
+void	print_list(s_list *list)
+{
+	while (list != NULL)
+	{
+		printf("%d\n", list->data);
+		list = list->next;
+	}
+}
+
+int	stack_length(s_list *stack)
+{
+	int	i;
+
+	i = 0;
+	while (stack != NULL)
+	{
+		stack = stack->next;
+		i++;
+	}
+	return (i);
+}
+
+s_list	*max_node(s_list *stack)
+{
+	s_list	*max;
+	s_list	*temp;
+
+	if (!stack || !stack->next)
+		return (NULL);
+	max = stack;
+	temp = max->next;
+	while (temp != NULL)
+	{
+		if (max->data < temp->data)
+			max = temp;
+		temp = temp->next;
+	}
+	return (max);
+}
+
+s_list	*min_node(s_list *stack)
+{
+	s_list	*min;
+	s_list	*temp;
+
+	if (!stack || !stack->next)
+		return (NULL);
+	min = stack;
+	temp = min->next;
+	while (temp != NULL)
+	{
+		if (min->data > temp->data)
+			min = temp;
+		temp = temp->next;
+	}
+	return (min);
 }

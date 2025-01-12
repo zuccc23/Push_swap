@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:39:07 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/12 13:24:56 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/12 15:46:50 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,27 @@ struct t_list
 	struct t_list *prev;
 	struct t_list *target;
 	
-};
+}; 
 
+// PARSING ////////////////////////////////////////////////////////
+
+int		valid_param(char **strs);
 int		ft_isdigit(int c);
 int		valid_char(const char *s);
 int		repeat_char(char *str);
 
+// LINKED LIST ///////////////////////////////////////////////////
+
+void	print_list(s_list *list);
+int		stack_length(s_list *stack);
 s_list	*ft_lstlast(s_list *lst);
 s_list	*ft_lst_before_last(s_list *lst);
+s_list	*assign_list(int *tab, int size);
+s_list	*create_node(int data);
+s_list	*max_node(s_list *stack);
+s_list	*min_node(s_list *stack);
+
+// OPERATIONS ////////////////////////////////////////////////////
 
 void	rotate_down_both(s_list **stack_a, s_list **stack_b);
 void	rotate_down(s_list **stack);
