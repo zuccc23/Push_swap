@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:19:03 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/09 17:31:55 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/12 13:26:12 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ int main(int argc, char **argv)
 	// rotate_both(&stack_a, &stack_b);
 	// stack_b = ft_lst_before_last(stack_a);
 	// rotate_down(&stack_b);
-	rotate_down_both(&stack_a, &stack_b);
+	// rotate_down_both(&stack_a, &stack_b);
 	
 	// stack_b = stack_b->next;
 	// // stack_b = stack_b->prev;
