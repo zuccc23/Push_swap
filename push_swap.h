@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:39:07 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/13 12:35:55 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/13 15:42:12 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	push_swap(s_list **stack_a, s_list **stack_b);
 void	sort_3(s_list **stack);
 void	sort_2(s_list **stack);
 void	sort_a_to_b(s_list **stack_a, s_list **stack_b);
+void	find_target_b(s_list **stack_a, s_list **stack_b);
+void	assign_target_b(s_list **stack_a, s_list **stack_b);
 s_list	*max_node(s_list *stack);
 s_list	*min_node(s_list *stack);
 
