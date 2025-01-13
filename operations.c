@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 17:28:15 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/12 14:20:59 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/13 11:48:14 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	push(s_list **give, s_list **receive)
 		return;
 	temp = (*give)->next;
 	(*give)->next = *receive;
-	(*receive)->prev = *give;
+	if (*receive != NULL)
+		(*receive)->prev = *give;
 	*receive = *give;
 	*give = temp;
 	(*give)->prev = NULL;

@@ -6,12 +6,11 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:57:55 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/12 15:20:57 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/13 12:25:26 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 s_list	*ft_lstlast(s_list *lst)
 {
@@ -102,38 +101,4 @@ int	stack_length(s_list *stack)
 	return (i);
 }
 
-s_list	*max_node(s_list *stack)
-{
-	s_list	*max;
-	s_list	*temp;
 
-	if (!stack || !stack->next)
-		return (NULL);
-	max = stack;
-	temp = max->next;
-	while (temp != NULL)
-	{
-		if (max->data < temp->data)
-			max = temp;
-		temp = temp->next;
-	}
-	return (max);
-}
-
-s_list	*min_node(s_list *stack)
-{
-	s_list	*min;
-	s_list	*temp;
-
-	if (!stack || !stack->next)
-		return (NULL);
-	min = stack;
-	temp = min->next;
-	while (temp != NULL)
-	{
-		if (min->data > temp->data)
-			min = temp;
-		temp = temp->next;
-	}
-	return (min);
-}
