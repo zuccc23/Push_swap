@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 10:34:12 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/13 15:59:04 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/14 10:27:42 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,42 +35,6 @@ void	sort_2(s_list **stack)
 	second = (*stack)->next;
 	if ((*stack)->data > second->data)
 		swap(&(*stack));
-}
-
-s_list	*max_node(s_list *stack)
-{
-	s_list	*max;
-	s_list	*temp;
-
-	if (!stack || !stack->next)
-		return (NULL);
-	max = stack;
-	temp = max->next;
-	while (temp != NULL)
-	{
-		if (max->data < temp->data)
-			max = temp;
-		temp = temp->next;
-	}
-	return (max);
-}
-
-s_list	*min_node(s_list *stack)
-{
-	s_list	*min;
-	s_list	*temp;
-
-	if (!stack || !stack->next)
-		return (NULL);
-	min = stack;
-	temp = min->next;
-	while (temp != NULL)
-	{
-		if (min->data > temp->data)
-			min = temp;
-		temp = temp->next;
-	}
-	return (min);
 }
 
 void	find_target_b(s_list **stack_a, s_list **stack_b)

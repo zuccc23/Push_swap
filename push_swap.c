@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:19:03 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/13 15:58:57 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/14 14:54:03 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,40 @@ void	sort_a_to_b(s_list **stack_a, s_list **stack_b)
 		push(&(*stack_a), &(*stack_b));
 	}
 }
+void	individual_cost(s_list **stack)
+{
+	s_list	*temp;
+	int		i;
 
+	temp = *stack;
+	i = 1;
+	while (temp->above_median != 0)
+	{
+		temp->cost = temp->index - 1;
+		temp = temp->next;
+	}
+	temp = ft_lstlast(*stack);
+	while (temp->above_median != 1)
+	{
+		temp->cost = i;
+		i++;
+		temp = temp->prev;
+	}
+}
 
+void	cost_of_push(s_list **give, s_list **receive)
+{
+	s_list	*temp;
+	
+	individual_cost(&(*give));
+	individual_cost(&(*receive));
+	temp = *give;
+	while (temp != NULL)
+	{
+		temp->cost = (temp->cost) + (temp->target->cost);
+		temp = temp->next;
+	}
+}
 
 int main(int argc, char **argv)
 {
@@ -51,16 +83,16 @@ int main(int argc, char **argv)
 	stack_b = assign_list(tab2, 4);
 	
 	// push_swap(&stack_a, &stack_b);
-	
-	// stack_a = stack_a->next;
-	assign_target_b(&stack_a, &stack_b);
+	index_assign(&stack_a, &stack_b);
+	median_assign(&stack_a, &stack_b);
+	// individual_cost(&stack_b);
+	cost_of_push(&stack_a, &stack_b);
+
 	while (stack_a != NULL)
 	{
-		test = stack_a->target;
-		printf("%d\n", test->data);
+		printf("%d\n", stack_a->cost);
 		stack_a = stack_a->next;
 	}
-	
 	
 	// print_list(stack_a);
 	// printf("\n");
