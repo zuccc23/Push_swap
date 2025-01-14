@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:19:03 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/14 14:54:03 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/14 17:47:48 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,40 +30,20 @@ void	sort_a_to_b(s_list **stack_a, s_list **stack_b)
 		push(&(*stack_a), &(*stack_b));
 		push(&(*stack_a), &(*stack_b));
 	}
-}
-void	individual_cost(s_list **stack)
-{
-	s_list	*temp;
-	int		i;
+	// while (stack_length(*stack_a) > 3)
+	// {
+	// 	assign_all(&(*stack_a), &(*stack_b));
+	// 	printf("test");
+	// }
 
-	temp = *stack;
-	i = 1;
-	while (temp->above_median != 0)
-	{
-		temp->cost = temp->index - 1;
-		temp = temp->next;
-	}
-	temp = ft_lstlast(*stack);
-	while (temp->above_median != 1)
-	{
-		temp->cost = i;
-		i++;
-		temp = temp->prev;
-	}
-}
-
-void	cost_of_push(s_list **give, s_list **receive)
-{
-	s_list	*temp;
 	
-	individual_cost(&(*give));
-	individual_cost(&(*receive));
-	temp = *give;
-	while (temp != NULL)
-	{
-		temp->cost = (temp->cost) + (temp->target->cost);
-		temp = temp->next;
-	}
+	
+	return (sort_3(&(*stack_a)));
+}
+
+void	push_cheapest_to_b(s_list **stack_a, s_list **stack_b)
+{
+	
 }
 
 int main(int argc, char **argv)
@@ -74,27 +54,24 @@ int main(int argc, char **argv)
 	// getBit(5, 10);
 	// printbin(5);
 	// bin(7);
-	int	tab[] = {2, 3, 1, 7, 4, 19};
-	int	tab2[] = {2, 13, 5, 6};
+	int	tab[] = {3, 2, 1, 7, 4, 19};
+	int	tab2[] = {2, 3, 5, 8, 9};
 	s_list	*stack_a = NULL;
 	s_list	*stack_b = NULL;
 	s_list	*test = NULL;
-	stack_a = assign_list(tab, 6);
-	stack_b = assign_list(tab2, 4);
+	stack_a = assign_list(tab, 4);
+	// stack_b = assign_list(tab2, 4);
 	
-	// push_swap(&stack_a, &stack_b);
-	index_assign(&stack_a, &stack_b);
-	median_assign(&stack_a, &stack_b);
-	// individual_cost(&stack_b);
-	cost_of_push(&stack_a, &stack_b);
+	push_swap(&stack_a, &stack_b);
+	// assign_all(&stack_a, &stack_b);
 
-	while (stack_a != NULL)
-	{
-		printf("%d\n", stack_a->cost);
-		stack_a = stack_a->next;
-	}
+	// while (stack_a != NULL)
+	// {
+	// 	printf("index : %d value : %d target(value) : %d cost : %d cheapest : %d\n", stack_a->index, stack_a->data, stack_a->target->data, stack_a->cost, stack_a->cheapest);
+	// 	stack_a = stack_a->next;
+	// }
 	
-	// print_list(stack_a);
-	// printf("\n");
-	// print_list(stack_b);
+	print_list(stack_a);
+	printf("\n");
+	print_list(stack_b);
 }

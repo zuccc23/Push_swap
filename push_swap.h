@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:39:07 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/14 12:02:17 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/14 17:10:45 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,23 @@ s_list	*create_node(int data);
 void	median_calc(s_list **stack);
 void	median_assign(s_list **stack_a, s_list **stack_b);
 void	index_assign(s_list **stack_a, s_list **stack_b);
+void	individual_cost(s_list **stack);
+void	cost_of_push(s_list **give, s_list **receive);
+void	find_cheapest(s_list **stack);
+void	find_target_b(s_list **stack_a, s_list **stack_b);
+void	assign_target_b(s_list **stack_a, s_list **stack_b);
 s_list	*max_node(s_list *stack);
 s_list	*min_node(s_list *stack);
 
 // SORTING ///////////////////////////////////////////////////////
 
 void	push_swap(s_list **stack_a, s_list **stack_b);
+void	sort_a_to_b(s_list **stack_a, s_list **stack_b);
+
+void	assign_all(s_list **stack_a, s_list **stack_b);
 void	sort_3(s_list **stack);
 void	sort_2(s_list **stack);
-void	sort_a_to_b(s_list **stack_a, s_list **stack_b);
-void	find_target_b(s_list **stack_a, s_list **stack_b);
-void	assign_target_b(s_list **stack_a, s_list **stack_b);
+
 
 // OPERATIONS ////////////////////////////////////////////////////
 

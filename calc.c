@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:26:28 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/14 12:03:57 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/14 17:11:17 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,46 @@ s_list	*min_node(s_list *stack)
 		temp = temp->next;
 	}
 	return (min);
+}
+
+void	find_target_b(s_list **stack_a, s_list **stack_b)
+{
+	s_list	*temp_a;
+	s_list	*temp_b;
+	s_list	*target_temp;
+
+	temp_a = *stack_a;
+	temp_b = *stack_b;
+	target_temp = NULL;
+	while (temp_b != NULL)
+	{
+		if (temp_a->data > temp_b->data)
+		{
+			if (target_temp == NULL || temp_b->data > target_temp->data)
+			{
+				temp_a->target = temp_b;
+				target_temp = temp_b;
+			}
+		}
+		temp_b = temp_b->next;
+	}
+	temp_b = *stack_b;
+	if (temp_a->target == NULL)
+		temp_a->target = max_node(temp_b);
+}
+
+void	assign_target_b(s_list **stack_a, s_list **stack_b)
+{
+	s_list	*temp_a;
+	s_list	*temp_b;
+
+	temp_a = *stack_a;
+	temp_b = *stack_b;
+	while (temp_a != NULL)
+	{
+		find_target_b(&temp_a, &temp_b);
+		temp_a = temp_a->next;
+	}
 }
 
 void	index_assign(s_list **stack_a, s_list **stack_b)
@@ -94,4 +134,61 @@ void	median_assign(s_list **stack_a, s_list **stack_b)
 {
 	median_calc(&(*stack_a));
 	median_calc(&(*stack_b));
+}
+
+void	individual_cost(s_list **stack)
+{
+	s_list	*temp;
+	int		i;
+
+	temp = *stack;
+	i = 1;
+	while (temp->above_median != 0)
+	{
+		temp->cost = temp->index - 1;
+		temp = temp->next;
+	}
+	temp = ft_lstlast(*stack);
+	while (temp->above_median != 1)
+	{
+		temp->cost = i;
+		i++;
+		temp = temp->prev;
+	}
+}
+
+void	cost_of_push(s_list **give, s_list **receive)
+{
+	s_list	*temp;
+	
+	individual_cost(&(*give));
+	individual_cost(&(*receive));
+	temp = *give;
+	while (temp != NULL)
+	{
+		temp->cost = (temp->cost) + (temp->target->cost);
+		temp = temp->next;
+	}
+}
+
+void	find_cheapest(s_list **stack)
+{
+	s_list	*temp;
+	s_list	*cheapest;
+
+	temp = *stack;
+	while (temp != NULL)
+	{
+		temp->cheapest = 0;
+		temp = temp->next;
+	}
+	temp = *stack;
+	cheapest = temp;
+	while (temp != NULL)
+	{
+		if (temp->cost < cheapest->cost)
+			cheapest = temp;
+		temp = temp->next;
+	}
+	cheapest->cheapest = 1;
 }
