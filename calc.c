@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:26:28 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/15 11:55:36 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/15 18:36:45 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,8 @@ void	median_calc(s_list **stack)
 	s_list	*a_temp;
 	int		median;
 
+	if (!*stack)
+		return;
 	a_temp = *stack;
 
 	median = stack_length(a_temp) / 2;
@@ -191,4 +193,13 @@ void	find_cheapest(s_list **stack)
 		temp = temp->next;
 	}
 	cheapest->cheapest = 1;
+}
+
+void	assign_all(s_list **stack_a, s_list **stack_b)
+{
+	assign_target_b(&(*stack_a), &(*stack_b));
+	index_assign(&(*stack_a), &(*stack_b));
+	median_assign(&(*stack_a), &(*stack_b));
+	cost_of_push(&(*stack_a), &(*stack_b));
+	find_cheapest(&(*stack_a));
 }
