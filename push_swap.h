@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:39:07 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/16 11:06:31 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/16 15:49:48 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ s_list	*create_node(int data);
 void	median_calc(s_list **stack);
 void	median_assign(s_list **stack_a, s_list **stack_b);
 void	index_assign(s_list **stack_a, s_list **stack_b);
+void	individual_index(s_list **stack);
 void	find_cheapest(s_list **stack);
 s_list	*max_node(s_list *stack);
 s_list	*min_node(s_list *stack);
@@ -84,7 +85,7 @@ void	sort_final(s_list **stack);
 
 void	sort_3(s_list **stack);
 void	sort_2(s_list **stack);
-void	move_a(s_list **stack_a, s_list **stack_b);
+void	move_a(s_list **stack_a, s_list *stack_b);
 void	move_b(s_list *stack_a, s_list **stack_b);
 void	push_cheapest_to_b(s_list **stack_a, s_list **stack_b);
 

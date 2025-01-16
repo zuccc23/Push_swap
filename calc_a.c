@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:22:43 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/16 11:18:29 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/16 17:00:36 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	find_target_a(s_list **stack_a, s_list **stack_b)
 	s_list	*temp_a;
 	s_list	*temp_b;
 	s_list	*target_temp;
-
+	// printf("---%d\n", (*stack_b)->data);
 	temp_a = *stack_a;
 	temp_b = *stack_b;
 	target_temp = NULL;
 	while (temp_a != NULL)
 	{
-		if (temp_b->data < temp_a->data)
+		if (temp_a->data < temp_b->data)
 		{
 			if (target_temp == NULL || temp_a->data < target_temp->data)
 			{

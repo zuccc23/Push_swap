@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:19:03 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/16 12:11:26 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/16 17:23:28 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ void	sort_a_to_b(s_list **stack_a, s_list **stack_b)
 		push(&(*stack_a), &(*stack_b));
 		push(&(*stack_a), &(*stack_b));
 	}
+	assign_all(&(*stack_a), &(*stack_b));
 	while (stack_length(*stack_a) > 3)
 	{
-		assign_all(&(*stack_a), &(*stack_b));
 		push_cheapest_to_b(&(*stack_a), &(*stack_b));
 	}
-	return (sort_3(&(*stack_a)));
+	sort_3(&(*stack_a));
 }
 
 void	sort_b_to_a(s_list **stack_a, s_list **stack_b)
@@ -84,43 +84,30 @@ void	sort_final(s_list **stack)
 	}
 }
 
-void	individual_cost2(s_list **stack)
+void	find_targetv2(s_list **stack_a, s_list **stack_b)
 {
-	s_list	*temp;
-	int		i;
-
-	temp = *stack;
-	
-	temp = ft_lstlast(*stack);
-	while (temp != NULL)
+	s_list	*temp_a;
+	s_list	*temp_b;
+	s_list	*target_temp;
+	// printf("---%d\n", (*stack_b)->data);
+	temp_a = *stack_a;
+	temp_b = *stack_b;
+	target_temp = NULL;
+	while (temp_a != NULL)
 	{
-		temp = temp->prev;
+		if (temp_a->data < temp_b->data)
+		{
+			if (target_temp == NULL || temp_a->data > target_temp->data)
+			{
+				temp_b->target = temp_a;
+				target_temp = temp_a;
+			}
+		}
+		temp_a = temp_a->next;
 	}
-	
-	// i = 1;
-	// // printf("%d\n", temp->above_median);
-	// // printf("%d\n", temp->next->above_median);
-	// // printf("%d\n", temp->next->next->above_median);
-	// // printf("%d\n", temp->next->next->next->above_median);
-	// while (temp->above_median != 0)
-	// {
-	// 	temp->cost = temp->index - 1;
-	// 	temp = temp->next;
-	// }
-	// // printf("%d\n", temp->data);
-	// // printf("%d\n", temp->next->data);
-	// // temp = ft_lstlast(*stack);
-	// temp = temp->next;
-	// // temp = temp->next;
-	// printf("%d\n", temp->data);
-	// printf("%d\n", temp->prev->data);
-	// printf("%d\n", temp->prev->prev->data);
-	// while (temp->above_median != 1)
-	// {
-	// 	temp->cost = i;
-	// 	i++;
-	// 	temp = temp->prev;
-	// }
+	temp_a = *stack_a;
+	if (temp_b->target == NULL)
+		temp_b->target = min_node(temp_a);
 }
 
 int main(int argc, char **argv)
@@ -131,40 +118,42 @@ int main(int argc, char **argv)
 	// printf("%d", valid_param(argv));
 	
 	// INIT //////////////////////////////////////////////////////////////////
-	int	tab[] = {39, 201, 11, 28, 1, 97, 44};
+	int	tab[] = {81, 5, 63, 27, 14, 92, 38, 50, 17, 70, 6, 54};
+	//
 	int	tab2[] = {49, 54, 5, 112, 91, 882};
 	s_list	*stack_a = NULL;
 	s_list	*stack_b = NULL;
 	s_list	*temp = NULL;
-	stack_a = assign_list(tab, 7);
+	stack_a = assign_list(tab, 12);
 	// stack_b = assign_list(tab2, 6);
 	
+	// SORT_A_TO_B /////////////////////////////////////////////////////////////////////
 
+	
+	// assign_all(&stack_a, &stack_b);
+	// push_cheapest_to_b(&stack_a, &stack_b);
+	// push_cheapest_to_b(&stack_a, &stack_b);
+	// push_cheapest_to_b(&stack_a, &stack_b);
+	// push_cheapest_to_b(&stack_a, &stack_b);
+	// push_cheapest_to_b(&stack_a, &stack_b);
+	// push_cheapest_to_b(&stack_a, &stack_b);
+	// push_cheapest_to_b(&stack_a, &stack_b);
+
+	
+	// move_b(stack_a, &stack_b);
+	// move_a(&stack_a, stack_b);
+	// push(&stack_a, &stack_b);
+	
+	// SORT_B_TO_A /////////////////////////////////////////////////////////////////////
+	
 	push_swap(&stack_a, &stack_b);
-	temp = ft_lstlast(stack_a);
-	// printf("%d\n", temp->data);
-	while (temp != NULL)
-	{
-		printf("%d\n", temp->data);
-		temp = temp->prev;
-	}
-	
-	
-	
-	
-	// sort_b_to_a(&stack_a, &stack_b);
-	
+	// assign_all2(&stack_a, &stack_b);
 	// assign_target_a(&stack_a, &stack_b);
-	// push_cheapest_to_a(&stack_a, &stack_b);
-	// index_assign(&stack_a, &stack_b);
-	// median_assign(&stack_a, &stack_b);
-	// // assign_target_a(&stack_a, &stack_b);
-	// // // cost_of_push(&stack_a, &stack_b);
-	// individual_cost2(&stack_a);
-	// find_cheapest(&stack_a);
-
-
+	// assign_target_b(&stack_b, &stack_a);
+	
+	
 	// TEST OF ALL VARIABLES ////////////////////////////////////////////////////
+	
 	// assign_all(&stack_a, &stack_b);
 	// assign_all2(&stack_a, &stack_b);
 	// while (stack_a != NULL)
@@ -179,15 +168,61 @@ int main(int argc, char **argv)
 	// }
 	
 	// TEST OF 1 VARIABLE /////////////////////////////////////////////////////////
-	// while (stack_a != NULL)
+	
+	// while (stack_b != NULL)
 	// {
-	// 	printf("index : %d\n", stack_a->index);
-	// 	stack_a = stack_a->next;
+	// 	printf("%d target : %d\n", stack_b->data, stack_b->target->data);
+	// 	stack_b = stack_b->next;
 	// }
 	// printf("\n");
+
+	//////////////////////////////////////////////////////////////////////
+	
+	temp = stack_b;
+	// while (temp != NULL)
+	// {
+	// 	find_targetv2(&stack_a, &temp);
+	// 	temp = temp->next;
+	// }
+	
+	find_targetv2(&stack_a, &temp);
+	temp = temp->next;
+	find_targetv2(&stack_a, &temp);
+	temp = temp->next;
+	find_targetv2(&stack_a, &temp);
+	temp = temp->next;
+	find_targetv2(&stack_a, &temp);
+	temp = temp->next;
+	find_targetv2(&stack_a, &temp);
+	temp = temp->next;
+	find_targetv2(&stack_a, &temp);
+	temp = temp->next;
+	find_targetv2(&stack_a, &temp);
+	temp = temp->next;
+	find_targetv2(&stack_a, &temp);
+	temp = temp->next;
+
+	///////////////////////////////////////////////////////////////////////
+
+	while (stack_b != NULL)
+	{
+		printf("%d target : %d\n", stack_b->data, stack_b->target->data);
+		stack_b = stack_b->next;
+	}
+	printf("\n");
+	
+	// while (stack_b->data != 92)
+	// {
+	// 	stack_b = stack_b->next;
+	// }
+	// // find_targetv2(&stack_a, &stack_b);
+	// printf("%d\n", stack_b->data);
+	// printf("%d target : %d\n", stack_b->data, stack_b->target->data);
 	
 	// PRINT LISTS ///////////////////////////////////////////////////////////////////
-	// print_list(stack_a);
-	// printf("\n");
+	
+	printf("\nStack A :\n");
+	print_list(stack_a);
+	// printf("\nStack B :\n");
 	// print_list(stack_b);
 }

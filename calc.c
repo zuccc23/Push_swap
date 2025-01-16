@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:26:28 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/16 11:34:00 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/16 15:49:01 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,21 @@ void	index_assign(s_list **stack_a, s_list **stack_b)
 		i++;
 	}
 }
+void	individual_index(s_list **stack)
+{
+	s_list	*temp;
+	int		i;
+
+	i = 1;
+	temp = *stack;
+	while (temp != NULL)
+	{
+		temp->index = i;
+		temp = temp->next;
+		i++;
+	}
+}
+
 void	median_calc(s_list **stack)
 {
 	s_list	*a_temp;
