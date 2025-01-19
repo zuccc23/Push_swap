@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:19:03 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/19 01:12:19 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/19 01:20:36 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,9 @@ void	find_targetv2(s_list *stack_a, s_list **stack_b)
 
 int main(int argc, char **argv)
 {
+	// FUNCTIONS TO FIX //////////////////////////////////////////////////
+	// cost_of_push
+	
 	// PARSING //////////////////////////////////////////////////////////////
 	// if (argc < 2)
 	// 	return (0);
