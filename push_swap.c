@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:19:03 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/19 01:01:56 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/19 01:12:19 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,13 +108,12 @@ int main(int argc, char **argv)
 	// printf("%d", valid_param(argv));
 	
 	// INIT //////////////////////////////////////////////////////////////////
-	int	tab[] = {72, 18, 59, 43, 91, 36, 5, 68, 14, 82, 33, 50, 27};
-	//
+	int	tab[] = {72, 18, 59, 43, 91, -36, 5, 68, 14, 82, 33, 50, 27};
 	int	tab2[] = {49, 54, 5, 112, 91, 882};
 	s_list	*stack_a = NULL;
 	s_list	*stack_b = NULL;
 	s_list	*temp = NULL;
-	stack_a = assign_list(tab, 13);
+	stack_a = assign_list(tab, 5);
 	// stack_b = assign_list(tab2, 6);
 	
 	// SORT_A_TO_B /////////////////////////////////////////////////////////////////////
@@ -233,8 +232,8 @@ int main(int argc, char **argv)
 	
 	// PRINT LISTS ///////////////////////////////////////////////////////////////////
 	
-	printf("\nStack A :\n");
-	print_list(stack_a);
+	// printf("\nStack A :\n");
+	// print_list(stack_a);
 	// printf("\nStack B :\n");
 	// print_list(stack_b);
 }
