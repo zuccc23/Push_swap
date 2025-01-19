@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:26:28 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/16 15:49:01 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/19 00:47:48 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,13 @@ void	individual_cost(s_list **stack)
 	int		i;
 
 	temp = *stack;
+	if (stack_length(temp) <= 2)
+	{
+		temp->cost = 0;
+		if (temp->next != NULL)
+			temp->next->cost = 1;
+		return;
+	}
 	i = 1;
 	while (temp->above_median != 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 10:34:12 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/16 15:53:38 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/18 23:53:41 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ void	sort_2(s_list **stack)
 
 void	push_cheapest_to_b(s_list **stack_a, s_list **stack_b)
 {
-	s_list	*temp;
-
 	move_b(*stack_a, &(*stack_b));
 	move_a(&(*stack_a), *stack_b);
 	push(&(*stack_a), &(*stack_b));

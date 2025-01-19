@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:39:07 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/16 15:49:48 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/19 00:22:56 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,14 @@ void	assign_all(s_list **stack_a, s_list **stack_b);
 // CALCULATION B -> A ////////////////////////////////////////////
 
 void	find_target_a(s_list **stack_a, s_list **stack_b);
+void	find_targetv2(s_list *stack_a, s_list **stack_b);
 void	assign_target_a(s_list **stack_a, s_list **stack_b);
 void	assign_all2(s_list **stack_a, s_list **stack_b);
 void	push_cheapest_to_a(s_list **stack_a, s_list **stack_b);
 void	move_a2(s_list **stack_a, s_list *stack_b);
-void	move_b2(s_list **stack_a, s_list **stack_b);
+void	move_b2(s_list *stack_a, s_list **stack_b);
+void	move_a3(s_list *givee, s_list **receive);
+void	move_b3(s_list **give, s_list *receive);
 
 // SORTING ///////////////////////////////////////////////////////
 
