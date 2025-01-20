@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:22:43 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/19 00:22:24 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/20 12:02:22 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,32 @@ void	find_target_a(s_list **stack_a, s_list **stack_b)
 		temp_a = temp_a->next;
 	}
 	temp_a = *stack_a;
-	if (temp_b->target == NULL)
+	if (target_temp == NULL)
 		temp_b->target = min_node(temp_a);
+}
+
+void	find_targetv2(s_list *stack_a, s_list **stack_b)
+{
+	s_list	*target;
+	s_list	*a_temp;
+	s_list	*b_temp;
+
+	a_temp = stack_a;
+	b_temp = *stack_b;
+	target = NULL;
+	while (a_temp != NULL)
+	{
+		if (a_temp->data > b_temp->data)
+		{
+			if (target == NULL || target->data > a_temp->data)
+				target = a_temp;
+		}
+		a_temp = a_temp->next;
+	}
+	if (target == NULL)
+		b_temp->target = min_node(stack_a);
+	else
+		b_temp->target = target;
 }
 
 void	assign_target_a(s_list **stack_a, s_list **stack_b)

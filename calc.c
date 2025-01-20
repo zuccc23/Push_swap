@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:26:28 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/19 00:47:48 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/20 12:01:05 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	find_target_b(s_list **stack_a, s_list **stack_b)
 		temp_b = temp_b->next;
 	}
 	temp_b = *stack_b;
-	if (temp_a->target == NULL)
+	if (target_temp == NULL)
 		temp_a->target = max_node(temp_b);
 }
 
