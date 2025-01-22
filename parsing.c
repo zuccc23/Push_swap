@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 14:27:31 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/13 10:34:51 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/22 11:11:39 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,12 @@ int	repeat_char(char *str)
 	{
 		if ((str[i] == '+' || str[i] == '-') && str[i + 1] == '\0')
 			return (1);
+		if (str[i] == ' ' && str[i + 1] == '\0')
+			return (1);
 		i++;
 	}
+	if (str[0] == ' ')
+		return (1);
 	return (0);
 }
 
@@ -65,7 +69,7 @@ int	valid_param(char **strs)
 	int	i;
 
 	i = 1;
-	while(strs[i])
+	while (strs[i])
 	{
 		if (valid_char(strs[i]) == 1)
 			return (1);

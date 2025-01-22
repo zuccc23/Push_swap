@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:39:07 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/20 11:13:12 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/22 11:24:58 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,21 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <stdarg.h>
+# include "ft_printf/ft_printf.h"
 
 // STRUCTURE ///////////////////////////////////////////////////////
 
 typedef struct t_list s_list;
 struct t_list
 {
-	int	data;
-	int	index;
-	int	cost;
-	int	above_median;
-	int	cheapest;
-	struct t_list *next;
-	struct t_list *prev;
-	struct t_list *target;
+	int				data;
+	int				index;
+	int				cost;
+	int				above_median;
+	int				cheapest;
+	struct t_list	*next;
+	struct t_list	*prev;
+	struct t_list	*target;
 };
 
 // PARSING ////////////////////////////////////////////////////////
