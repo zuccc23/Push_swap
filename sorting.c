@@ -6,16 +6,16 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 10:34:12 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/18 23:53:41 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/22 19:19:18 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_3(s_list **stack)
+void	sort_3(t_stack **stack)
 {
-	s_list	*second;
-	s_list	*third;
+	t_stack	*second;
+	t_stack	*third;
 
 	second = (*stack)->next;
 	third = second->next;
@@ -32,16 +32,16 @@ void	sort_3(s_list **stack)
 	third->prev = second;
 	second->prev = *stack;
 }
-void	sort_2(s_list **stack)
+void	sort_2(t_stack **stack)
 {
-	s_list	*second;
+	t_stack	*second;
 
 	second = (*stack)->next;
 	if ((*stack)->data > second->data)
 		swap(&(*stack));
 }
 
-void	push_cheapest_to_b(s_list **stack_a, s_list **stack_b)
+void	push_cheapest_to_b(t_stack **stack_a, t_stack **stack_b)
 {
 	move_b(*stack_a, &(*stack_b));
 	move_a(&(*stack_a), *stack_b);
@@ -49,10 +49,10 @@ void	push_cheapest_to_b(s_list **stack_a, s_list **stack_b)
 	assign_all(&(*stack_a), &(*stack_b));
 }
 
-void	move_b(s_list *stack_a, s_list **stack_b)
+void	move_b(t_stack *stack_a, t_stack **stack_b)
 {
-	s_list	*a_temp;
-	s_list	*b_temp;
+	t_stack	*a_temp;
+	t_stack	*b_temp;
 
 	a_temp = stack_a;
 	b_temp = *stack_b;
@@ -77,9 +77,9 @@ void	move_b(s_list *stack_a, s_list **stack_b)
 	*stack_b = b_temp;
 }
 
-void	move_a(s_list **stack_a, s_list *stack_b)
+void	move_a(t_stack **stack_a, t_stack *stack_b)
 {
-	s_list	*a_temp;
+	t_stack	*a_temp;
 
 	a_temp = *stack_a;
 	while (a_temp->cheapest != 1)

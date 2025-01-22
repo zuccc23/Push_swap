@@ -6,15 +6,15 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:57:55 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/13 12:25:26 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/22 19:19:18 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-s_list	*ft_lstlast(s_list *lst)
+t_stack	*ft_lstlast(t_stack *lst)
 {
-	s_list	*tmp;
+	t_stack	*tmp;
 
 	if (!lst)
 		return (NULL);
@@ -24,10 +24,10 @@ s_list	*ft_lstlast(s_list *lst)
 	return (tmp);
 }
 
-s_list	*ft_lst_before_last(s_list *lst)
+t_stack	*ft_lst_before_last(t_stack *lst)
 {
-	s_list	*tmp;
-	s_list	*tmptmp;
+	t_stack	*tmp;
+	t_stack	*tmptmp;
 
 	if (!lst)
 		return (NULL);
@@ -40,12 +40,12 @@ s_list	*ft_lst_before_last(s_list *lst)
 	return (tmptmp);
 }
 
-s_list	*create_node(int data)
+t_stack	*create_node(int data)
 {
-	s_list *newNode;
+	t_stack *newNode;
 
 	newNode = NULL;
-	newNode = malloc(sizeof(s_list));
+	newNode = malloc(sizeof(t_stack));
 	if (!newNode)
 		return (NULL);
 	newNode->data = data;
@@ -55,11 +55,11 @@ s_list	*create_node(int data)
 	return (newNode);
 }
 
-s_list	*assign_list(int *tab, int size)
+t_stack	*assign_list(int *tab, int size)
 {
-	s_list *list;
-	s_list *temp;
-	s_list	*prev_temp;
+	t_stack *list;
+	t_stack *temp;
+	t_stack	*prev_temp;
 	int 	i;
 	
 	i = 1;
@@ -79,7 +79,7 @@ s_list	*assign_list(int *tab, int size)
 	}
 	return (list);
 }
-void	print_list(s_list *list)
+void	print_list(t_stack *list)
 {
 	while (list != NULL)
 	{
@@ -88,7 +88,7 @@ void	print_list(s_list *list)
 	}
 }
 
-int	stack_length(s_list *stack)
+int	stack_length(t_stack *stack)
 {
 	int	i;
 

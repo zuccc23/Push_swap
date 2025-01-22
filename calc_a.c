@@ -6,17 +6,17 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:22:43 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/20 12:02:22 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/22 19:19:18 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	find_target_a(s_list **stack_a, s_list **stack_b)
+void	find_target_a(t_stack **stack_a, t_stack **stack_b)
 {
-	s_list	*temp_a;
-	s_list	*temp_b;
-	s_list	*target_temp;
+	t_stack	*temp_a;
+	t_stack	*temp_b;
+	t_stack	*target_temp;
 	// printf("---%d\n", (*stack_b)->data);
 	temp_a = *stack_a;
 	temp_b = *stack_b;
@@ -38,11 +38,11 @@ void	find_target_a(s_list **stack_a, s_list **stack_b)
 		temp_b->target = min_node(temp_a);
 }
 
-void	find_targetv2(s_list *stack_a, s_list **stack_b)
+void	find_targetv2(t_stack *stack_a, t_stack **stack_b)
 {
-	s_list	*target;
-	s_list	*a_temp;
-	s_list	*b_temp;
+	t_stack	*target;
+	t_stack	*a_temp;
+	t_stack	*b_temp;
 
 	a_temp = stack_a;
 	b_temp = *stack_b;
@@ -62,10 +62,10 @@ void	find_targetv2(s_list *stack_a, s_list **stack_b)
 		b_temp->target = target;
 }
 
-void	assign_target_a(s_list **stack_a, s_list **stack_b)
+void	assign_target_a(t_stack **stack_a, t_stack **stack_b)
 {
-	s_list	*temp_a;
-	s_list	*temp_b;
+	t_stack	*temp_a;
+	t_stack	*temp_b;
 
 	temp_a = *stack_a;
 	temp_b = *stack_b;
@@ -76,7 +76,7 @@ void	assign_target_a(s_list **stack_a, s_list **stack_b)
 	}
 }
 
-void	assign_all2(s_list **stack_a, s_list **stack_b)
+void	assign_all2(t_stack **stack_a, t_stack **stack_b)
 {
 	assign_target_a(&(*stack_a), &(*stack_b));
 	index_assign(&(*stack_a), &(*stack_b));
@@ -85,9 +85,9 @@ void	assign_all2(s_list **stack_a, s_list **stack_b)
 	find_cheapest(&(*stack_b));
 }
 
-void	push_cheapest_to_a(s_list **stack_a, s_list **stack_b)
+void	push_cheapest_to_a(t_stack **stack_a, t_stack **stack_b)
 {
-	s_list	*temp;
+	t_stack	*temp;
 
 	// assign_all2(&(*stack_a), &(*stack_b));
 	
@@ -97,10 +97,10 @@ void	push_cheapest_to_a(s_list **stack_a, s_list **stack_b)
 	assign_all2(&(*stack_a), &(*stack_b));
 }
 
-void	move_a2(s_list **stack_a, s_list *stack_b)
+void	move_a2(t_stack **stack_a, t_stack *stack_b)
 {
-	s_list	*give;
-	s_list	*receive;
+	t_stack	*give;
+	t_stack	*receive;
 
 	give = stack_b;
 	receive = *stack_a;
@@ -125,10 +125,10 @@ void	move_a2(s_list **stack_a, s_list *stack_b)
 	*stack_a = receive;
 }
 
-void	move_b2(s_list *stack_a, s_list **stack_b)
+void	move_b2(t_stack *stack_a, t_stack **stack_b)
 {
-	s_list	*give;
-	s_list	*receive;
+	t_stack	*give;
+	t_stack	*receive;
 
 	give = stack_a;
 	receive = *stack_b;
@@ -153,10 +153,10 @@ void	move_b2(s_list *stack_a, s_list **stack_b)
 	*stack_b = receive;
 }
 
-void	move_a3(s_list *givee, s_list **receive)
+void	move_a3(t_stack *givee, t_stack **receive)
 {
-	s_list	*a_temp;
-	s_list	*b_temp;
+	t_stack	*a_temp;
+	t_stack	*b_temp;
 
 	a_temp = givee;
 	b_temp = *receive;
@@ -181,9 +181,9 @@ void	move_a3(s_list *givee, s_list **receive)
 	*receive = b_temp;
 }
 
-void	move_b3(s_list **give, s_list *receive)
+void	move_b3(t_stack **give, t_stack *receive)
 {
-	s_list	*a_temp;
+	t_stack	*a_temp;
 
 	a_temp = *give;
 	while (a_temp->cheapest != 1)

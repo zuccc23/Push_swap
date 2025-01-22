@@ -6,15 +6,15 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 17:28:15 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/20 14:51:23 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/22 19:19:18 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push(s_list **give, s_list **receive)
+void	push(t_stack **give, t_stack **receive)
 {
-	s_list	*temp;
+	t_stack	*temp;
 
 	if (!*give)
 			return;
@@ -40,10 +40,10 @@ void	push(s_list **give, s_list **receive)
 	write(1, "\n", 1);
 }
 
-void	swap(s_list **list)
+void	swap(t_stack **list)
 {
-	s_list	*temp_a;
-	s_list	*temp_b;
+	t_stack	*temp_a;
+	t_stack	*temp_b;
 	    
 	if (!*list)
 		return;
@@ -62,16 +62,16 @@ void	swap(s_list **list)
 	write(1, "\n", 1);
 }
 
-void	swap_both(s_list **stack_a, s_list **stack_b)
+void	swap_both(t_stack **stack_a, t_stack **stack_b)
 {
 	swap(&(*stack_a));
 	swap(&(*stack_b));
 }
 
-void	rotate(s_list **stack)
+void	rotate(t_stack **stack)
 {
-	s_list	*first;
-	s_list	*last;
+	t_stack	*first;
+	t_stack	*last;
 
 	if (!*stack)
 		return;
@@ -88,16 +88,16 @@ void	rotate(s_list **stack)
 	write(1, "\n", 1);
 }
 
-void	rotate_both(s_list **stack_a, s_list **stack_b)
+void	rotate_both(t_stack **stack_a, t_stack **stack_b)
 {
 	rotate(&(*stack_a));
 	rotate(&(*stack_b));
 }
 
-void	rotate_down(s_list **stack)
+void	rotate_down(t_stack **stack)
 {
-	s_list	*last;
-	s_list	*b4last;
+	t_stack	*last;
+	t_stack	*b4last;
 
 	if (!*stack)
 		return;
@@ -114,7 +114,7 @@ void	rotate_down(s_list **stack)
 	write(1, "\n", 1);
 }
 
-void	rotate_down_both(s_list **stack_a, s_list **stack_b)
+void	rotate_down_both(t_stack **stack_a, t_stack **stack_b)
 {
 	rotate_down(&(*stack_a));
 	rotate_down(&(*stack_b));
