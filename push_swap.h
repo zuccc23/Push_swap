@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:39:07 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/22 19:20:08 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/23 14:08:06 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 typedef struct s_list	t_stack;
 struct s_list
 {
-	int				data;
+	long				data;
 	int				index;
 	int				cost;
 	int				above_median;
@@ -45,9 +45,13 @@ int		repeat_char(char *str);
 
 int		ft_split(char *s, char c, long **tab);
 int		count_word(const char *s, char c);
-long	get_number(char *s, char c);
-long	*add_numbers(long *tab, char *s, char c);
-long	ft_atoi(const char *str);
+long		get_number(char *s, char c);
+long		*add_numbers(long *tab, char *s, char c);
+long		ft_atoi(const char *str);
+
+// NUMBERS TO TAB ////////////////////////////////////////////////
+
+int	argv_to_tab(char **argv, int argc, long **tab);
 
 // LINKED LISTS ///////////////////////////////////////////////////
 
@@ -55,8 +59,8 @@ void	print_list(t_stack *list);
 int		stack_length(t_stack *stack);
 t_stack	*ft_lstlast(t_stack *lst);
 t_stack	*ft_lst_before_last(t_stack *lst);
-t_stack	*assign_list(int *tab, int size);
-t_stack	*create_node(int data);
+t_stack	*assign_list(long *tab, int size);
+t_stack	*create_node(long data);
 
 // CALCULATION ///////////////////////////////////////////////////
 

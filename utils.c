@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:57:55 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/22 19:19:18 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/23 14:09:22 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_stack	*ft_lst_before_last(t_stack *lst)
 	return (tmptmp);
 }
 
-t_stack	*create_node(int data)
+t_stack	*create_node(long data)
 {
 	t_stack *newNode;
 
@@ -55,7 +55,7 @@ t_stack	*create_node(int data)
 	return (newNode);
 }
 
-t_stack	*assign_list(int *tab, int size)
+t_stack	*assign_list(long *tab, int size)
 {
 	t_stack *list;
 	t_stack *temp;
@@ -83,7 +83,7 @@ void	print_list(t_stack *list)
 {
 	while (list != NULL)
 	{
-		printf("%d\n", list->data);
+		printf("%ld\n", list->data);
 		list = list->next;
 	}
 }
