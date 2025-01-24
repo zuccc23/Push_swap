@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 12:44:18 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/22 19:15:45 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/24 12:57:26 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,20 +89,18 @@ long	*add_numbers(long *tab, char *s, char c)
 	return (tab);
 }
 
-int	ft_split(char *s, char c, long **tab)
+int	ft_split(char *s, char c, long **tab, int *size)
 {
-	int	size;
-
 	if (!s)
 		return (0);
-	size = count_word(s, c);
-	if (size < 2)
+	*size = count_word(s, c);
+	if (*size < 2)
 	{
 		return (0);
 	}
-	*tab = malloc(size * sizeof(long));
+	*tab = malloc((*size) * sizeof(long));
 	if (!*tab)
 		return (0);
 	*tab = add_numbers(*tab, s, ' ');
-	return (size);
+	return (*size);
 }

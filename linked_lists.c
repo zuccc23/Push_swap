@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   linked_lists.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 16:57:55 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/23 14:09:22 by dahmane          ###   ########.fr       */
+/*   Created: 2025/01/24 14:05:37 by dahmane           #+#    #+#             */
+/*   Updated: 2025/01/24 14:27:31 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,26 +42,26 @@ t_stack	*ft_lst_before_last(t_stack *lst)
 
 t_stack	*create_node(long data)
 {
-	t_stack *newNode;
+	t_stack	*new_node;
 
-	newNode = NULL;
-	newNode = malloc(sizeof(t_stack));
-	if (!newNode)
+	new_node = NULL;
+	new_node = malloc(sizeof(t_stack));
+	if (!new_node)
 		return (NULL);
-	newNode->data = data;
-	newNode->next = NULL;
-	newNode->prev = NULL;
-	newNode->target = NULL;
-	return (newNode);
+	new_node->data = data;
+	new_node->next = NULL;
+	new_node->prev = NULL;
+	new_node->target = NULL;
+	return (new_node);
 }
 
 t_stack	*assign_list(long *tab, int size)
 {
-	t_stack *list;
-	t_stack *temp;
+	t_stack	*list;
+	t_stack	*temp;
 	t_stack	*prev_temp;
-	int 	i;
-	
+	int		i;
+
 	i = 1;
 	list = create_node(tab[0]);
 	if (!list)
@@ -79,6 +79,7 @@ t_stack	*assign_list(long *tab, int size)
 	}
 	return (list);
 }
+
 void	print_list(t_stack *list)
 {
 	while (list != NULL)
@@ -100,5 +101,3 @@ int	stack_length(t_stack *stack)
 	}
 	return (i);
 }
-
-

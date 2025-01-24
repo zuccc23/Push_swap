@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   numbers_to_tab.c                                   :+:      :+:    :+:   */
+/*   operations2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/23 13:10:23 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/24 12:52:20 by dahmane          ###   ########.fr       */
+/*   Created: 2025/01/24 14:12:08 by dahmane           #+#    #+#             */
+/*   Updated: 2025/01/24 14:13:10 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	argv_to_tab(char **argv, int argc, long **tab, int *size)
+void	swap_both(t_stack **stack_a, t_stack **stack_b)
 {
-	int	i;
-	int	j;
-	int	k;
+	swap(&(*stack_a));
+	swap(&(*stack_b));
+}
 
-	i = 1;
-	k = 0;
-	*size = (argc - 1);
-	*tab = malloc((*size) * sizeof(long));
-	if (*tab == NULL)
-		return (0);
-	while (argv[i])
-	{
-		(*tab)[k] = ft_atoi(argv[i]);
-		i++;
-		k++;
-	}
-	return (*size);
+void	rotate_both(t_stack **stack_a, t_stack **stack_b)
+{
+	rotate(&(*stack_a));
+	rotate(&(*stack_b));
+}
+
+void	rotate_down_both(t_stack **stack_a, t_stack **stack_b)
+{
+	rotate_down(&(*stack_a));
+	rotate_down(&(*stack_b));
 }

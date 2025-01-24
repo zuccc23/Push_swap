@@ -6,87 +6,11 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:26:28 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/22 19:19:18 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/24 14:20:32 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-t_stack	*max_node(t_stack *stack)
-{
-	t_stack	*max;
-	t_stack	*temp;
-
-	if (!stack || !stack->next)
-		return (NULL);
-	max = stack;
-	temp = max->next;
-	while (temp != NULL)
-	{
-		if (max->data < temp->data)
-			max = temp;
-		temp = temp->next;
-	}
-	return (max);
-}
-
-t_stack	*min_node(t_stack *stack)
-{
-	t_stack	*min;
-	t_stack	*temp;
-
-	if (!stack || !stack->next)
-		return (NULL);
-	min = stack;
-	temp = min->next;
-	while (temp != NULL)
-	{
-		if (min->data > temp->data)
-			min = temp;
-		temp = temp->next;
-	}
-	return (min);
-}
-
-void	find_target_b(t_stack **stack_a, t_stack **stack_b)
-{
-	t_stack	*temp_a;
-	t_stack	*temp_b;
-	t_stack	*target_temp;
-
-	temp_a = *stack_a;
-	temp_b = *stack_b;
-	target_temp = NULL;
-	while (temp_b != NULL)
-	{
-		if (temp_a->data > temp_b->data)
-		{
-			if (target_temp == NULL || temp_b->data > target_temp->data)
-			{
-				temp_a->target = temp_b;
-				target_temp = temp_b;
-			}
-		}
-		temp_b = temp_b->next;
-	}
-	temp_b = *stack_b;
-	if (target_temp == NULL)
-		temp_a->target = max_node(temp_b);
-}
-
-void	assign_target_b(t_stack **stack_a, t_stack **stack_b)
-{
-	t_stack	*temp_a;
-	t_stack	*temp_b;
-
-	temp_a = *stack_a;
-	temp_b = *stack_b;
-	while (temp_a != NULL)
-	{
-		find_target_b(&temp_a, &temp_b);
-		temp_a = temp_a->next;
-	}
-}
 
 void	index_assign(t_stack **stack_a, t_stack **stack_b)
 {
@@ -111,6 +35,7 @@ void	index_assign(t_stack **stack_a, t_stack **stack_b)
 		i++;
 	}
 }
+
 void	individual_index(t_stack **stack)
 {
 	t_stack	*temp;
@@ -132,9 +57,8 @@ void	median_calc(t_stack **stack)
 	int		median;
 
 	if (!*stack)
-		return;
+		return ;
 	a_temp = *stack;
-
 	median = stack_length(a_temp) / 2;
 	if ((stack_length(a_temp) % 2) != 0)
 		median ++;
@@ -147,52 +71,11 @@ void	median_calc(t_stack **stack)
 		a_temp = a_temp->next;
 	}
 }
+
 void	median_assign(t_stack **stack_a, t_stack **stack_b)
 {
 	median_calc(&(*stack_a));
 	median_calc(&(*stack_b));
-}
-
-void	individual_cost(t_stack **stack)
-{
-	t_stack	*temp;
-	int		i;
-
-	temp = *stack;
-	if (stack_length(temp) <= 2)
-	{
-		temp->cost = 0;
-		if (temp->next != NULL)
-			temp->next->cost = 1;
-		return;
-	}
-	i = 1;
-	while (temp->above_median != 0)
-	{
-		temp->cost = temp->index - 1;
-		temp = temp->next;
-	}
-	temp = ft_lstlast(*stack);
-	while (temp->above_median != 1)
-	{
-		temp->cost = i;
-		i++;
-		temp = temp->prev;
-	}
-}
-
-void	cost_of_push(t_stack **give, t_stack **receive)
-{
-	t_stack	*temp;
-	
-	individual_cost(&(*give));
-	individual_cost(&(*receive));
-	temp = *give;
-	while (temp != NULL)
-	{
-		temp->cost = (temp->cost) + (temp->target->cost);
-		temp = temp->next;
-	}
 }
 
 void	find_cheapest(t_stack **stack)
@@ -215,13 +98,4 @@ void	find_cheapest(t_stack **stack)
 		temp = temp->next;
 	}
 	cheapest->cheapest = 1;
-}
-
-void	assign_all(t_stack **stack_a, t_stack **stack_b)
-{
-	assign_target_b(&(*stack_a), &(*stack_b));
-	index_assign(&(*stack_a), &(*stack_b));
-	median_assign(&(*stack_a), &(*stack_b));
-	cost_of_push(&(*stack_a), &(*stack_b));
-	find_cheapest(&(*stack_a));
 }
