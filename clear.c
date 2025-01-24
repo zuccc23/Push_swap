@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   numbers_to_tab.c                                   :+:      :+:    :+:   */
+/*   clear.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/23 13:10:23 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/24 12:52:20 by dahmane          ###   ########.fr       */
+/*   Created: 2025/01/24 18:58:32 by dahmane           #+#    #+#             */
+/*   Updated: 2025/01/24 19:30:21 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	argv_to_tab(char **argv, int argc, long **tab, int *size)
+void	ft_lstclear(t_stack **lst)
 {
-	int	i;
-	int	j;
-	int	k;
+	t_stack	*temp;
 
-	i = 1;
-	k = 0;
-	*size = (argc - 1);
-	*tab = malloc((*size) * sizeof(long));
-	if (*tab == NULL)
-		return (0);
-	while (argv[i])
+	if (!lst)
+		return ;
+	while (*lst != NULL)
 	{
-		(*tab)[k] = ft_atoi(argv[i]);
-		i++;
-		k++;
+		temp = (*lst)->next;
+		free(*lst);
+		*lst = temp;
 	}
-	return (*size);
+	free(*lst);
+	*lst = NULL;
 }

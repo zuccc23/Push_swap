@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 10:34:12 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/24 14:21:54 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/24 20:38:18 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ void	sort_a_to_b(t_stack **stack_a, t_stack **stack_b)
 	{
 		push(&(*stack_a), &(*stack_b));
 		push(&(*stack_a), &(*stack_b));
+		assign_all(&(*stack_a), &(*stack_b));
 	}
-	assign_all(&(*stack_a), &(*stack_b));
 	while (stack_length(*stack_a) > 3)
 	{
 		push_cheapest_to_b(&(*stack_a), &(*stack_b));

@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:19:03 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/24 14:30:11 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/24 20:35:08 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	push_swap(t_stack **stack_a, t_stack **stack_b)
 	sort_a_to_b(&(*stack_a), &(*stack_b));
 	sort_b_to_a(&(*stack_a), &(*stack_b));
 	sort_final(&(*stack_a));
+	// free stack_b
 }
 
 void	init_variables(long **t, int *s, t_stack **s_a, t_stack **s_b)
@@ -49,9 +50,14 @@ int	main(int argc, char **argv)
 	if (argc > 2)
 		if (argv_to_tab(argv, argc, &tab, &size) == 0)
 			return (ft_printf("Error\n"));
+	if (check_numbers(&tab, size) == 1)
+		return (ft_printf("Error\n"));
 	stack_a = assign_list(tab, size);
+	// free(tab);
 	if (stack_a == NULL)
 		return (0);
-	// push_swap(&stack_a, &stack_b);
+	push_swap(&stack_a, &stack_b);
+	// ft_lstclear(&stack_a);
+	// ft_lstclear(&stack_b);
 	print_list(stack_a);
 }

@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 14:27:31 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/22 11:11:39 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/24 17:35:26 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,32 @@ int	repeat_char(char *str)
 		return (1);
 	return (0);
 }
+int	too_large_number(char *str)
+{
+	int	i;
+	int	count;
+	int	temp;
+
+	i = 0;
+	temp = 0;
+	count = 0;
+	while (str[i])
+	{
+		if (ft_isdigit(str[i]) == 0)
+			count = 0;
+		if (ft_isdigit(str[i]) == 1)
+		{
+			count++;
+			if (count > temp)
+				temp = count;
+		}
+		i++;
+	}
+	count = temp;
+	if (count > 10)
+		return (1);
+	return (0);
+}
 
 int	valid_param(char **strs)
 {
@@ -74,6 +100,8 @@ int	valid_param(char **strs)
 		if (valid_char(strs[i]) == 1)
 			return (1);
 		if (repeat_char(strs[i]) == 1)
+			return (1);
+		if (too_large_number(strs[i]) == 1)
 			return (1);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:05:37 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/24 14:27:31 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/24 20:39:08 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,10 @@ t_stack	*assign_list(long *tab, int size)
 	{
 		temp->next = create_node(tab[i]);
 		if (!temp->next)
+		{
+			// ft_lstclear(&list);
 			return (NULL);
+		}
 		prev_temp = temp;
 		temp = temp->next;
 		temp->prev = prev_temp;

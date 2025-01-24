@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:39:07 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/24 13:55:31 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/24 19:30:26 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int		valid_param(char **strs);
 int		ft_isdigit(int c);
 int		valid_char(const char *s);
 int		repeat_char(char *str);
+int	too_large_number(char *str);
 
 // SPLIT /////////////////////////////////////////////////////////
 
@@ -54,9 +55,13 @@ long	get_number(char *s, char c);
 long	*add_numbers(long *tab, char *s, char c);
 long	ft_atoi(const char *str);
 
-// NUMBERS TO TAB ////////////////////////////////////////////////
+// PARSING 2 ////////////////////////////////////////////////
 
 int		argv_to_tab(char **argv, int argc, long **tab, int *size);
+int		double_numbers(long *tab, int size);
+int		max_and_min(long *tab, int size);
+int		check_numbers(long **tab, int size);
+int		ft_isspace(char **strs);
 
 // LINKED LISTS ///////////////////////////////////////////////////
 
@@ -123,5 +128,9 @@ void	push(t_stack **give, t_stack **receive);
 void	swap_both(t_stack **stack_a, t_stack **stack_b);
 void	rotate_down_both(t_stack **stack_a, t_stack **stack_b);
 void	rotate_both(t_stack **stack_a, t_stack **stack_b);
+
+// CLEAR /////////////////////////////////////////////////////////
+
+void	ft_lstclear(t_stack **lst);
 
 #endif
