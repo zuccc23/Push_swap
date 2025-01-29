@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   operations_b.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 17:28:15 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/28 15:16:26 by dahmane          ###   ########.fr       */
+/*   Created: 2025/01/28 14:50:04 by dahmane           #+#    #+#             */
+/*   Updated: 2025/01/28 15:16:10 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push(t_stack **give, t_stack **receive)
+void	push_b(t_stack **give, t_stack **receive)
 {
 	t_stack	*temp;
 
@@ -23,7 +23,7 @@ void	push(t_stack **give, t_stack **receive)
 		(*give)->next = *receive;
 		(*receive)->prev = *give;
 		*receive = *give;
-		ft_printf("pa\n");
+		ft_printf("pb\n");
 		return ;
 	}
 	else
@@ -36,10 +36,10 @@ void	push(t_stack **give, t_stack **receive)
 		*give = temp;
 		(*give)->prev = NULL;
 	}
-	ft_printf("pa\n");
+	ft_printf("pb\n");
 }
 
-void	swap(t_stack **list)
+void	swap_b(t_stack **list)
 {
 	t_stack	*temp_a;
 	t_stack	*temp_b;
@@ -56,10 +56,10 @@ void	swap(t_stack **list)
 	temp_b->next = temp_a;
 	temp_b->prev = NULL;
 	*list = temp_b;
-	ft_printf("sa\n");
+	ft_printf("sb\n");
 }
 
-void	rotate(t_stack **stack)
+void	rotate_b(t_stack **stack)
 {
 	t_stack	*first;
 	t_stack	*last;
@@ -75,10 +75,10 @@ void	rotate(t_stack **stack)
 	first->next = NULL;
 	first->prev = last;
 	last->next = first;
-	ft_printf("ra\n");
+	ft_printf("rb\n");
 }
 
-void	rotate_down(t_stack **stack)
+void	rotate_down_b(t_stack **stack)
 {
 	t_stack	*last;
 	t_stack	*b4last;
@@ -94,5 +94,5 @@ void	rotate_down(t_stack **stack)
 	(*stack)->prev = last;
 	*stack = last;
 	(*stack)->prev = NULL;
-	ft_printf("rra\n");
+	ft_printf("rrb\n");
 }

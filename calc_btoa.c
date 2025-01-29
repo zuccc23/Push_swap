@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:10:45 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/24 14:22:32 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/28 15:06:58 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	push_cheapest_to_a(t_stack **stack_a, t_stack **stack_b)
 
 	move_b3(&(*stack_b), *stack_a);
 	move_a3(*stack_b, &(*stack_a));
-	push(&(*stack_b), &(*stack_a));
+	push_b(&(*stack_b), &(*stack_a));
 	assign_all2(&(*stack_a), &(*stack_b));
 }
 
@@ -99,7 +99,7 @@ void	move_b3(t_stack **give, t_stack *receive)
 	{
 		while (a_temp->index != 1)
 		{
-			rotate(&(*give));
+			rotate_b(&(*give));
 			individual_index(&(*give));
 		}
 	}
@@ -107,7 +107,7 @@ void	move_b3(t_stack **give, t_stack *receive)
 	{
 		while (a_temp->index != 1)
 		{
-			rotate_down(&(*give));
+			rotate_down_b(&(*give));
 			individual_index(&(*give));
 		}
 	}

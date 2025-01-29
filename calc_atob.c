@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:59:16 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/24 14:00:59 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/28 15:05:27 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	move_b(t_stack *stack_a, t_stack **stack_b)
 	{
 		while (a_temp->target->index != 1)
 		{
-			rotate(&b_temp);
+			rotate_b(&b_temp);
 			individual_index(&b_temp);
 		}
 	}
@@ -81,7 +81,7 @@ void	move_b(t_stack *stack_a, t_stack **stack_b)
 	{
 		while (a_temp->target->index != 1)
 		{
-			rotate_down(&b_temp);
+			rotate_down_b(&b_temp);
 			individual_index(&b_temp);
 		}
 	}

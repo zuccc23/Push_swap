@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:19:03 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/24 20:35:08 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/28 16:09:44 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,10 @@ int	main(int argc, char **argv)
 	push_swap(&stack_a, &stack_b);
 	// ft_lstclear(&stack_a);
 	// ft_lstclear(&stack_b);
-	print_list(stack_a);
+	while (stack_b != NULL)
+	{
+		stack_b = stack_b->next;
+	}
+	// print_list(stack_a);
+	// print_list(stack_b);
 }

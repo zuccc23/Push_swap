@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:39:07 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/24 19:30:26 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/28 14:54:55 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,13 @@ void	rotate_down(t_stack **stack);
 void	rotate(t_stack **stack);
 void	swap(t_stack **list);
 void	push(t_stack **give, t_stack **receive);
+
+// OPERATIONS B ////////////////////////////////////////////////////
+
+void	rotate_down_b(t_stack **stack);
+void	rotate_b(t_stack **stack);
+void	swap_b(t_stack **list);
+void	push_b(t_stack **give, t_stack **receive);
 
 // OPERATIONS 2 //////////////////////////////////////////////////
 
