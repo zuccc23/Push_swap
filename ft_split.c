@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 12:44:18 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/24 12:57:26 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/29 12:22:09 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ long	ft_atoi(const char *str)
 	return (n);
 }
 
-long	get_number(char *s, char c)
+long	get_number(char *s)
 {
 	long	number;
 
@@ -68,7 +68,7 @@ long	get_number(char *s, char c)
 	return (number);
 }
 
-long	*add_numbers(long *tab, char *s, char c)
+long	*add_numbers(long *tab, char *s)
 {
 	int	i;
 	int	j;
@@ -77,7 +77,7 @@ long	*add_numbers(long *tab, char *s, char c)
 	i = 0;
 	while (s[j] != '\0')
 	{
-		tab[i] = get_number(&s[j], ' ');
+		tab[i] = get_number(&s[j]);
 		i++;
 		while (s[j] != '\0' && s[j] != ' ')
 		{
@@ -101,6 +101,6 @@ int	ft_split(char *s, char c, long **tab, int *size)
 	*tab = malloc((*size) * sizeof(long));
 	if (!*tab)
 		return (0);
-	*tab = add_numbers(*tab, s, ' ');
+	*tab = add_numbers(*tab, s);
 	return (*size);
 }

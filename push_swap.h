@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:39:07 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/28 14:54:55 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/29 12:22:17 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ int	too_large_number(char *str);
 
 int		ft_split(char *s, char c, long **tab, int *size);
 int		count_word(const char *s, char c);
-long	get_number(char *s, char c);
-long	*add_numbers(long *tab, char *s, char c);
+long	get_number(char *s);
+long	*add_numbers(long *tab, char *s);
 long	ft_atoi(const char *str);
 
 // PARSING 2 ////////////////////////////////////////////////
@@ -96,7 +96,7 @@ void	assign_all2(t_stack **stack_a, t_stack **stack_b);
 
 void	find_target_b(t_stack **stack_a, t_stack **stack_b);
 void	assign_target_b(t_stack **stack_a, t_stack **stack_b);
-void	move_a(t_stack **stack_a, t_stack *stack_b);
+void	move_a(t_stack **stack_a);
 void	move_b(t_stack *stack_a, t_stack **stack_b);
 void	push_cheapest_to_b(t_stack **stack_a, t_stack **stack_b);
 
@@ -105,7 +105,7 @@ void	push_cheapest_to_b(t_stack **stack_a, t_stack **stack_b);
 void	find_targetv2(t_stack *stack_a, t_stack **stack_b);
 void	assign_target_a(t_stack **stack_a, t_stack **stack_b);
 void	move_a3(t_stack *givee, t_stack **receive);
-void	move_b3(t_stack **give, t_stack *receive);
+void	move_b3(t_stack **give);
 void	push_cheapest_to_a(t_stack **stack_a, t_stack **stack_b);
 
 // SORTING ///////////////////////////////////////////////////////

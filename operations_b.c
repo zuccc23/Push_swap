@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 14:50:04 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/28 15:16:10 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/29 11:45:26 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	push_b(t_stack **give, t_stack **receive)
 		(*give)->next = *receive;
 		(*receive)->prev = *give;
 		*receive = *give;
-		ft_printf("pb\n");
+		*give = NULL;
+		ft_printf("pa\n");
 		return ;
 	}
 	else
@@ -36,7 +37,7 @@ void	push_b(t_stack **give, t_stack **receive)
 		*give = temp;
 		(*give)->prev = NULL;
 	}
-	ft_printf("pb\n");
+	ft_printf("pa\n");
 }
 
 void	swap_b(t_stack **list)

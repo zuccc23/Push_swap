@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 17:01:58 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/24 17:56:02 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/29 12:19:24 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	argv_to_tab(char **argv, int argc, long **tab, int *size)
 {
 	int	i;
-	int	j;
 	int	k;
 
 	if (ft_isspace(argv) == 1)

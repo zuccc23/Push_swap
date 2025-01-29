@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:10:45 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/28 15:06:58 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/29 12:16:48 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,10 @@ void	assign_target_a(t_stack **stack_a, t_stack **stack_b)
 
 void	push_cheapest_to_a(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*temp;
-
-	move_b3(&(*stack_b), *stack_a);
+	assign_all2(&(*stack_a), &(*stack_b));
+	move_b3(&(*stack_b));
 	move_a3(*stack_b, &(*stack_a));
 	push_b(&(*stack_b), &(*stack_a));
-	assign_all2(&(*stack_a), &(*stack_b));
 }
 
 void	move_a3(t_stack *givee, t_stack **receive)
@@ -88,7 +86,7 @@ void	move_a3(t_stack *givee, t_stack **receive)
 	*receive = b_temp;
 }
 
-void	move_b3(t_stack **give, t_stack *receive)
+void	move_b3(t_stack **give)
 {
 	t_stack	*a_temp;
 
