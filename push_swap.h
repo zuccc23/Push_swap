@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:39:07 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/29 12:22:17 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/29 18:04:18 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		valid_param(char **strs);
 int		ft_isdigit(int c);
 int		valid_char(const char *s);
 int		repeat_char(char *str);
-int	too_large_number(char *str);
+int		too_large_number(char *str);
 
 // SPLIT /////////////////////////////////////////////////////////
 

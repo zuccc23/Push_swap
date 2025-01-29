@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 14:27:31 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/24 17:35:26 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/29 18:03:34 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int	repeat_char(char *str)
 		return (1);
 	return (0);
 }
+
 int	too_large_number(char *str)
 {
 	int	i;
