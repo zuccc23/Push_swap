@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:39:07 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/29 18:04:18 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/30 16:57:47 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ struct s_list
 
 void	push_swap(t_stack **stack_a, t_stack **stack_b);
 void	init_variables(long **t, int *s, t_stack **s_a, t_stack **s_b);
+int		is_sorted(long *tab, int size, t_stack **list);
 
 // PARSING ////////////////////////////////////////////////////////
 
@@ -65,7 +66,6 @@ int		ft_isspace(char **strs);
 
 // LINKED LISTS ///////////////////////////////////////////////////
 
-void	print_list(t_stack *list); //DELETE AFTER
 int		stack_length(t_stack *stack);
 t_stack	*ft_lstlast(t_stack *lst);
 t_stack	*ft_lst_before_last(t_stack *lst);

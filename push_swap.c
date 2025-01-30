@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:19:03 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/29 18:08:46 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/30 16:59:50 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,26 @@ void	init_variables(long **t, int *s, t_stack **s_a, t_stack **s_b)
 	*t = NULL;
 }
 
+int	is_sorted(long *tab, int size, t_stack **list)
+{
+	int	i;
+
+	i = 0;
+	while (i < size - 1)
+	{
+		if (tab[i] > tab[i + 1])
+		{
+			free(tab);
+			return (1);
+		}
+		i++;
+	}
+	free(tab);
+	if (*list != NULL)
+		ft_lstclear(&(*list));
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
@@ -51,12 +71,11 @@ int	main(int argc, char **argv)
 			return (ft_printf("Error\n"));
 	if (check_numbers(&tab, size) == 1)
 		return (ft_printf("Error\n"));
-	//check if list is already sorted
 	stack_a = assign_list(tab, size);
-	free(tab);
+	if (is_sorted(tab, size, &stack_a) == 0)
+		return (0);
 	if (stack_a == NULL)
 		return (0);
 	push_swap(&stack_a, &stack_b);
 	ft_lstclear(&stack_a);
-	// print_list(stack_b);
 }

@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:05:37 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/29 18:03:01 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/01/30 16:56:04 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,15 +81,6 @@ t_stack	*assign_list(long *tab, int size)
 		i++;
 	}
 	return (list);
-}
-
-void	print_list(t_stack *list)
-{
-	while (list != NULL)
-	{
-		printf("%ld\n", list->data);
-		list = list->next;
-	}
 }
 
 int	stack_length(t_stack *stack)
