@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:19:03 by dahmane           #+#    #+#             */
-/*   Updated: 2025/01/30 16:59:50 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/02/04 16:15:40 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 		if (ft_split(argv[1], ' ', &tab, &size) <= 1)
 			return (ft_printf("Error\n"));
-	if (argc > 2)
+	if (argc > 2) 
 		if (argv_to_tab(argv, argc, &tab, &size) == 0)
 			return (ft_printf("Error\n"));
 	if (check_numbers(&tab, size) == 1)
